@@ -11,7 +11,7 @@ var CommentList = React.createClass({
 	},
 
 	render: function() {
-		Console.log("hello");
+		console.log("hello");
 		return (
 			<div>
 				{[].map(function(comment) {
