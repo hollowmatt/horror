@@ -34,19 +34,29 @@ var Store = new _.extend([], EventEmitter.prototype, {
 
 });
 
+//Actions
+var Actions = new _.extend({}, {
+	addComment: function(params) {
+		AppDispatcher.dispatch({
+			actionType: Constants.ADD_COMMENT,
+			comment: params
+		});
+	}
+});
+
 // There should only be one dispatcher - declare it here
 // Bridge between store and actions 
-var AppDispatcher = new FluxDispatcher();
+var AppDispatcher = new Flux.Dispatcher();
 
 AppDispatcher.register(function(payload) {
-	
 	var action = payload.actionType;
+	console.log(payload);
 	switch(action) {
 		case Constants.ADD_COMMENT:
 			Store.addComment(payload.comment);
+			Store.emitChange();
 			break;
 		default:
 			// NO-OP
 	}
 });
-

@@ -11,10 +11,10 @@ var CommentList = React.createClass({
 	},
 
 	render: function() {
-		console.log("hello");
+		console.log("rendering");
 		return (
 			<div>
-				{[].map(function(comment) {
+				{Store.comments().map(function(comment) {
 					return (
 						<Comment key={comment.id} {... comment} />
 					);
