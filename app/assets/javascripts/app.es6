@@ -1,10 +1,5 @@
 // registry of messages the app supports
 
-const Constants = {
-	CHANGE_EVENT: 'change',
-	ADD_COMMENT: 'comments.add'
-};
-
 class Store extends EventEmitter {
 	constructor() {
 		super()
