@@ -1,19 +1,23 @@
-import CommentStore from '/stores/comment_store'
-import Actions from '/actions'
+import CommentStore from '/stores/comment_store';
+import Actions from '/actions';
+import CommentList from '/components/comment_list';
 
 class CommentSection extends React.Component {
 
+	constructor() {
+		super();
+		this.store = new CommentStore();
+	}
+	
 	render() {
-		console.log("rendering");
 		return (
 			<div>
-				<CommentList />
+				<CommentList store={this.store} />
 			</div>
 		);
 	}
 }
 
-window.Store = new CommentStore()
-window.Actions = Actions
+window.Actions = Actions;
 window.CommentSection = CommentSection;
 export default CommentSection;

@@ -21,7 +21,6 @@
 //= require flux
 //= require eventemitter
 //= require components
-//= require app
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
