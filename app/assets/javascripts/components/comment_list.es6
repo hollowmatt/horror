@@ -1,3 +1,5 @@
+import Comment from '/components/comment'
+
 class CommentList extends React.Component {
 	
 	static get contextTypes() {
@@ -34,5 +36,4 @@ class CommentList extends React.Component {
 
 }
 
-window.CommentList = CommentList;
 export default CommentList;
