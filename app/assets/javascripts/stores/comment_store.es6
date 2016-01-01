@@ -9,9 +9,13 @@ class CommentStore extends EventEmitter {
 		AppDispatcher.register((payload) => {
 			switch(payload.actionType) {
 				case Constants.ADD_COMMENT:
-					this.addComment(payload.comment)
-					this.emitChange()
-					break
+					this.addComment(payload.comment);
+					this.emitChange();
+					break;
+				case Constants.SET_COMMENTS:
+					this.setComments(payload.comments);
+					this.emitChange();
+					break;
 				default:
 					// NO-OP
 			}
@@ -23,6 +27,11 @@ class CommentStore extends EventEmitter {
 		this._comments[comment.id || this._comments.length] = comment;
 	}
 
+	setComments (comments) {
+		comments.forEach(comment => {
+			this.addComment(comment);
+		})
+	}
 	// List comments
 	comments () {
 		return this._comments;
