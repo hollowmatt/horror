@@ -6,10 +6,11 @@ class CommentForm extends React.Component {
 		}
 	}
 
-	constructor() {
+	constructor(props) {
 		super();
 		this.defaultState = { body:'', author:''};
 		this.state = this.defaultState;
+		this.state.isReplying = props.isReplying || false;
 	}
 
 	onFieldChange(event) {
@@ -28,7 +29,7 @@ class CommentForm extends React.Component {
 	render() {
 		return(
 			<div className='form'>
-				<form>
+				<form className={this.state.isReplying ? '' : 'hide'} >
 					<label>Author</label>
 					<input type='text' name="author" value={this.state.author} onChange={this.onFieldChange.bind(this)}/>
 					<label>Comment</label>
