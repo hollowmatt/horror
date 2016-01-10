@@ -12,6 +12,14 @@ class CommentForm extends React.Component {
 		this.state = this.defaultState;
 	}
 
+	static getPropTypes() {
+		return {
+			isReplying: React.PropTypes.bool,
+			onCommentSubmitted: React.PropTypes.func,
+			parent_id: React.PropTypes.number
+		}
+	}
+
 	onFieldChange(event) {
 		let prop = {};
 		prop[event.target.name] = event.target.value; 
@@ -23,6 +31,9 @@ class CommentForm extends React.Component {
 		console.log(this.props);
 		this.context.actions.addComment(_.merge(this.state, { parent_id: this.props.parent_id}));
 		this.setState(this.defaultState);
+		if(this.props.onCommentSubmitted) {
+			this.props.onCommentSubmitted();
+		}
 	}
 
 	render() {
