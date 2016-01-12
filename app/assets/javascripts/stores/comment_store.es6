@@ -54,7 +54,7 @@ class CommentStore extends EventEmitter {
 	}
 
 	removeChangeListener (callback) {
-		this.remove(Constants.CHANGE_EVENT, callback);
+		this.removeListener(Constants.CHANGE_EVENT, callback);
 	}
 
 	emitChange () {
