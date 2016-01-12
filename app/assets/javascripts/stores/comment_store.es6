@@ -42,7 +42,9 @@ class CommentStore extends EventEmitter {
 	}
 	// List comments
 	comments (parentId) {
-		return this._comments.filter(comment => {return comment && comment.parent_id === parentId});
+		// use lodash for filters and sorts
+		return _.chain(this._comments.filter(comment => {return comment && comment.parent_id === parentId; }))
+						.sortBy('rank').reverse().value();
 	}
 
 	// These 3 methods (addChangeListener, removeChangeListener, emitChange)
