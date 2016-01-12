@@ -3,9 +3,13 @@ import Constants from '/constants'
 import Api from '/api'
 
 class Actions {
+
+	constructor(restId) {
+		this.restaurantId = restId;
+	}
 	
-	static upvoteComment(comment) {
-		Api.put(`/restaurants/1/comments/${comment.id}/upvote`).then(resp => {
+	upvoteComment(comment) {
+		Api.put(`/restaurants/${this.restaurantId}/comments/${comment.id}/upvote`).then(resp => {
 			return resp.json();
 		}).then ( comment => {
 			AppDispatcher.dispatch({
@@ -15,9 +19,9 @@ class Actions {
 		});		
 	}
 
-	static addComment(params) {
+	addComment(params) {
 
-		Api.post('/restaurants/1/comments', {
+		Api.post(`/restaurants/${this.restaurantId}/comments`, {
 			comment: params
 		}).then(resp => {
 			return resp.json();
@@ -29,7 +33,7 @@ class Actions {
 		});
 	}
 
-	static setComments(params) {
+	setComments(params) {
 		AppDispatcher.dispatch({
 			actionType: Constants.SET_COMMENTS,
 			comments: params
