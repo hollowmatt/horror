@@ -10,7 +10,7 @@ class Actions {
 		}).then ( comment => {
 			AppDispatcher.dispatch({
 				actionType: Constants.UPVOTE_COMMENT,
-				comment: params
+				comment: comment
 			});
 		});		
 	}

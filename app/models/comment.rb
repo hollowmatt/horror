@@ -5,11 +5,7 @@ class Comment < ActiveRecord::Base
 
 	def self.upvote(id)
 		comment = find(id)
-		if comment.rank
-			comment.update_attributes(rank: comment.rank + 1)
-		else
-			comment.update_attributes(rank: 1)
-		end
+		comment.update_attributes(rank: comment.rank.to_i + 1)
 	end
 
 end

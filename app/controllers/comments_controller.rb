@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 	def upvote
 		Comment.upvote(params[:comment_id])
 		@comment = Comment.find(params[:comment_id])
+		render :create
 	end
 	
 	private

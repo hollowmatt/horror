@@ -26,6 +26,16 @@ class Api {
 								 	})
 								);
 	}
+
+	static put(route, params) {
+		return fetch(`${route}.json`,{
+								 		method: 'put', 
+								 		credentials: 'include', 
+								 		headers: this.headers()
+								 	}
+								);
+
+	}
 }
 
 export default Api;
