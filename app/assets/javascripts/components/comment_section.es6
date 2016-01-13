@@ -8,7 +8,7 @@ class CommentSection extends React.Component {
 	constructor(props) {
 		super();
 		this.store = new CommentStore();
-		this.actions = new Actions(1);
+		this.actions = new Actions(props.restaurantId);
 		this.actions.setComments(JSON.parse(props.comments));
 	}
 	
