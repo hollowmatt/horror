@@ -15,9 +15,18 @@ class Api {
 	}
 
 	static post(route, params) {
-		return fetch(`${route}.json`, 
+		return this.xhr(route, params, 'post');
+	}
+
+	static put(route, params) {
+		return this.xhr(route, params, 'put');
+	}
+
+	static xhr(route, params, verb) {
+		if (params){
+			return fetch(`${route}.json`, 
 								 _.merge({
-								 		method: 'post', 
+								 		method: verb, 
 								 		credentials: 'include', 
 								 		headers: this.headers()
 								 	}, 
@@ -25,16 +34,15 @@ class Api {
 								 		body: JSON.stringify(params) 
 								 	})
 								);
-	}
-
-	static put(route, params) {
-		return fetch(`${route}.json`,{
-								 		method: 'put', 
+		}
+		else {
+			return fetch(`${route}.json`,{
+								 		method: verb, 
 								 		credentials: 'include', 
 								 		headers: this.headers()
 								 	}
 								);
-
+		}	
 	}
 }
 
