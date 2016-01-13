@@ -10,7 +10,7 @@ class Actions {
 	
 	upvoteComment(comment) {
 		Api.put(`/restaurants/${this.restaurantId}/comments/${comment.id}/upvote`).then(resp => {
-			return resp.json();
+			return resp;
 		}).then ( comment => {
 			AppDispatcher.dispatch({
 				actionType: Constants.UPVOTE_COMMENT,
@@ -24,7 +24,7 @@ class Actions {
 		Api.post(`/restaurants/${this.restaurantId}/comments`, {
 			comment: params
 		}).then(resp => {
-			return resp.json();
+			return resp;
 		}).then ( comment => {
 			AppDispatcher.dispatch({
 				actionType: Constants.ADD_COMMENT,

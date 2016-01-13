@@ -23,26 +23,17 @@ class Api {
 	}
 
 	static xhr(route, params, verb) {
-		if (params){
-			return fetch(`${route}.json`, 
-								 _.merge({
-								 		method: verb, 
-								 		credentials: 'include', 
-								 		headers: this.headers()
-								 	}, 
-								 	{ 
-								 		body: JSON.stringify(params) 
-								 	})
-								);
-		}
-		else {
-			return fetch(`${route}.json`,{
-								 		method: verb, 
-								 		credentials: 'include', 
-								 		headers: this.headers()
-								 	}
-								);
-		}	
+		return fetch(`${route}.json`, 
+							 _.merge({
+							 		method: verb, 
+							 		credentials: 'include', 
+							 		headers: this.headers()
+							 	}, 
+							 	{ 
+							 		body: JSON.stringify(params) 
+							 	})).then( resp => { 
+							 		return resp.json();
+							 	});
 	}
 }
 
