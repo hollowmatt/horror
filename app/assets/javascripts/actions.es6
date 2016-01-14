@@ -6,6 +6,7 @@ class Actions {
 
 	constructor(restId) {
 		this.restaurantId = restId;
+		this.watchInterval = setInterval(this.watch.bind(this), 1000);
 	}
 	
 	upvoteComment(comment) {
@@ -38,6 +39,12 @@ class Actions {
 			actionType: Constants.SET_COMMENTS,
 			comments: params
 		})
+	}
+
+	watch() {
+		Api.get(`/restaurants/${this.restaurantId}/comments`).then ( comments => {
+			this.setComments(comments)
+		});
 	}
 }
 

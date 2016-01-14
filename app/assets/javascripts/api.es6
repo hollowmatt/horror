@@ -22,6 +22,10 @@ class Api {
 		return this.xhr(route, params, 'put');
 	}
 
+	static get(route, params) {
+		return this.xhr(route, params, 'get');
+	}
+
 	static xhr(route, params, verb) {
 		return fetch(`${route}.json`, 
 							 _.merge({
